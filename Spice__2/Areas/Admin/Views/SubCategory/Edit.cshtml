@@ -1,0 +1,97 @@
+﻿@model Spice__2.Models.ViewModels.SubCategoryAndCategoryViewModels
+@using Spice__2.Extentions
+
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info">Edit Sub Category</h2>
+<br />
+
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<div class="border backgroundWhite row">
+    <div class="col-8 border-right">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="subCategory.CategoryId" />
+            <input type="hidden" asp-for="subCategory.Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="subCategory.CategoryId" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <select id="ddlCategorylist" asp-for="subCategory.CategoryId" disabled asp-items="Model.CategoryList.ToSelectListItem(Model.subCategory.CategoryId)" class="form-control"></select>
+                </div>
+                <span asp-validation-for="subCategory.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="subCategory.Name" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="subCategory.Name" class="form-control" />
+                </div>
+                <span asp-validation-for="subCategory.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-5 offset-3">
+                    <partial name="_EditAndBackToListButton" model="Model.subCategory.Id" />
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="col-3 offset-1">
+        @if (Model.subCategoryList.Count() > 0)
+        {
+            <p> Existing subcategories: </p>
+
+            <div id="SubCategoryList">
+                <ul class="list-group"></ul>
+            </div>
+        }
+    </div>
+
+</div>
+
+@section Scripts {
+
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+    <script>
+        function updateSubCategoryList() {
+            var categorySelected = document.getElementById("ddlCategorylist").value;
+
+            $list = $('#SubCategoryList');
+
+            $.ajax({
+                url: '/Admin/SubCategory/GetSubCategory/' + categorySelected,
+                type: 'GET',
+                dataType: 'text',
+                success: function (data) {
+                    results = JSON.parse(data);
+                    $list.html('');
+                    $list.append(' <ul class="list-group"> ')
+                    for (i in results) {
+                        $list.append(' <li class="list-group-item">' + results[i].text + '</li>');
+                    }
+
+                    $list.append('</ul>');
+                }
+            });
+        }
+
+
+        $(document).ready(function () {
+            updateSubCategoryList();
+        });
+
+   
+    </script>
+
+}
