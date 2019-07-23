@@ -25,13 +25,13 @@ namespace Spice__2.Areas.Admin.Controllers
         {
             return View(await _db.Category.ToListAsync());
         }
-
+        //-------------------------------------------------------------------------//
         //Get ---> Create
         public IActionResult Create()
         {
             return View();
         }
-
+        //--------------------------------------------------------------------------//
         //POST --- Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -71,7 +71,7 @@ namespace Spice__2.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Category category)
         {
-            // if is valid
+            // if it is valid
             if (ModelState.IsValid)
             {
                 _db.Category.Update(category);
