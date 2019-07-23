@@ -11,7 +11,7 @@
 <br />
 <form method="post" enctype="multipart/form-data">
     <div class="border backgroundWhite row">
-        <input type="hidden" asp-for="MenuItem.Id" />
+        <input type="hidden" asp-for="MenuItem.Id" /> @*//--On the POST we will need this hidden input.*@
 
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
