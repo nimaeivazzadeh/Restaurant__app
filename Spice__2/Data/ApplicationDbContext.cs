@@ -17,5 +17,7 @@ namespace Spice__2.Data
         public DbSet<Category> Category { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<MenuItem> MenuItem { get; set;  }
+        public DbSet<Coupon> Coupon { get; set; }
+
     }
 }
