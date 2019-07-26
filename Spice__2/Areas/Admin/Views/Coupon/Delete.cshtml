@@ -1,18 +1,18 @@
 ﻿@model Coupon
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Details";
 
 }
 
 <br />
-<h2 class="text-info">Edit Coupon</h2>
+<h2 class="text-info">Delete Coupon</h2>
 <br />
 <form method="post" enctype="multipart/form-data">
     <div class="border backgroundWhite">
         <br />
         <div class="col-12 border">
-            @{ 
-                var base64 = Convert.ToBase64String(Model.Picture); //--> As out Image is Into the DataBase we have to convert it into Base64.Then show it in the View.
+            @{
+                var base64 = Convert.ToBase64String(Model.Picture);
                 var imgsrc = string.Format("data:Image/jpg;base64, {0}", base64);
             }
             <img src="@imgsrc" height="100%" width="100%" />
@@ -25,7 +25,7 @@
                     <label asp-for="Name" class="col-form-label"></label>
                 </div>
                 <div class="col-5">
-                    <input asp-for="Name" class="form-control" />
+                    <input asp-for="Name" readonly class="form-control" />
                 </div>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
@@ -34,7 +34,7 @@
                     <label asp-for="Picture" class="col-form-label"></label>
                 </div>
                 <div class="col-5">
-                    <input type="file" id="projectImage" name="file" multiple class="form-control" />
+                    <input type="file" id="projectImage" disabled name="file" multiple class="form-control" />
                 </div>
             </div>
             <div class="form-group row">
@@ -50,7 +50,7 @@
                     <label asp-for="Discount" class="col-form-label"></label>
                 </div>
                 <div class="col-5">
-                    <input asp-for="Discount" class="form-control" />
+                    <input asp-for="Discount" readonly class="form-control" />
                 </div>
                 <span asp-validation-for="Discount" class="text-danger"></span>
             </div>
@@ -59,7 +59,7 @@
                     <label asp-for="MinimumAmount" class="col-form-label"></label>
                 </div>
                 <div class="col-5">
-                    <input asp-for="MinimumAmount" class="form-control" />
+                    <input asp-for="MinimumAmount" readonly class="form-control" />
                 </div>
                 <span asp-validation-for="MinimumAmount" class="text-danger"></span>
             </div>
@@ -68,16 +68,16 @@
                     <label asp-for="IsActive" class="col-form-label"></label>
                 </div>
                 <div class="col-5">
-                    <input type="checkbox" asp-for="IsActive" class="form-control" />
+                    <input type="checkbox" disabled asp-for="IsActive" class="form-control" />
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-5 offset-2">
-                    <partial name="_EditAndBackToListButton" model="Model.Id" />
+                    <partial name="_DeleteAndBackToListButton" model="Model.Id" />
                 </div>
             </div>
         </div>
-       
+
     </div>
 </form>
 
