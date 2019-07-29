@@ -38,8 +38,8 @@ namespace Spice__2
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddDefaultTokenProviders()
+            services.AddIdentity<IdentityUser, IdentityRole>() //-----------------------------> I put IdentityRole dependency Injection into the Middle ware.
+                .AddDefaultTokenProviders()   //----------------------------------------------> We declared this manualy.
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 

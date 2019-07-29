@@ -123,30 +123,31 @@ namespace Spice__2.Areas.Identity.Pages.Account
 
                     if (role == SD.kitchenUser)
                     {
-                        await _userManager.AddToRoleAsync(user, SD.kitchenUser);
+                        await _userManager.AddToRoleAsync(user, SD.kitchenUser); //--> We asign specific role to user.
                     }
                     else
                     {
                         if (role == SD.FrontDeskUser)
                         {
-                            await _userManager.AddToRoleAsync(user, SD.FrontDeskUser);
+                            await _userManager.AddToRoleAsync(user, SD.FrontDeskUser); //--> We asign specific role to user.
                         }
                         else
                         {
                             if (role == SD.ManegerUser)
                             {
-                                await _userManager.AddToRoleAsync(user, SD.ManegerUser);
+                                await _userManager.AddToRoleAsync(user, SD.ManegerUser); //--> We asign specific role to user.
                             }
                             else
                             {
                                 await _userManager.AddToRoleAsync(user, SD.CustomerEndUser); //--> We asign specific role to user.
                                 await _signInManager.SignInAsync(user, isPersistent: false);
+
                                 return LocalRedirect(returnUrl);  //--> When we create a user we want to redirect to User list page.
                             }
                         }
                     }
 
-                    return RedirectToAction("Index", "User", new { area = "Admin"});
+                    return RedirectToAction("Index", "User", new { area = "Admin"});  //-> If it is not a user we want to redirect it o the Index page.
                     //-----------------------------------------------------------------------// 
 
                     _logger.LogInformation("User created a new account with password.");

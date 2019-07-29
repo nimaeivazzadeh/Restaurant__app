@@ -22,10 +22,10 @@ namespace Spice__2.Areas.Admin.Controllers
         {
             _db = db;
         }
-
+        //-----------------------------------------------//  We want to show all users inide the list except those that has logged in.
         public async Task<IActionResult> Index()
         {
-            var claimIdentity = (ClaimsIdentity)this.User.Identity;  //--> We want to show all users except those that has logged in.
+            var claimIdentity = (ClaimsIdentity)this.User.Identity;  
             var claim = claimIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
             
@@ -41,7 +41,7 @@ namespace Spice__2.Areas.Admin.Controllers
 
             var applicationUser = await _db.ApplicationUser.FirstOrDefaultAsync(m => m.Id == id);
 
-            applicationUser.LockoutEnd = DateTime.Now.AddYears(1000);
+            applicationUser.LockoutEnd = DateTime.Now.AddYears(1000); //--> By this method user will be locked inside the database.
 
             await _db.SaveChangesAsync();
 
@@ -57,7 +57,7 @@ namespace Spice__2.Areas.Admin.Controllers
 
             var applicationUser = await _db.ApplicationUser.FirstOrDefaultAsync(m => m.Id == id);
 
-            applicationUser.LockoutEnd = DateTime.Now;
+            applicationUser.LockoutEnd = DateTime.Now; //--> By this method user will be Unlocked inside the database.
 
             await _db.SaveChangesAsync();
 
