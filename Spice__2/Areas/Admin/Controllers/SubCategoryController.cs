@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Spice__2.Data;
 using Spice__2.Models;
 using Spice__2.Models.ViewModels;
+using Spice__2.Utility;
 
 namespace Spice__2.Areas.Admin.Controllers
 {
+    [Authorize(Roles = SD.ManegerUser)]
     [Area("Admin")]
     public class SubCategoryController : Controller
     {

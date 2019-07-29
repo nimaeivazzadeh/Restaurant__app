@@ -36,7 +36,7 @@ namespace Spice__2.Areas.Identity.Pages.Account
             }
             else
             {
-                return Page();
+                return RedirectToPage("logout");  //---> To Fix the logout issue.
             }
         }
     }
