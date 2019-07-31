@@ -25,7 +25,7 @@ namespace Spice__2.Areas.Admin.Controllers
         //-----------------------------------------------//  We want to show all users inide the list except those that has logged in.
         public async Task<IActionResult> Index()
         {
-            var claimIdentity = (ClaimsIdentity)this.User.Identity;  
+            var claimIdentity = (ClaimsIdentity) this.User.Identity;  
             var claim = claimIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
             
