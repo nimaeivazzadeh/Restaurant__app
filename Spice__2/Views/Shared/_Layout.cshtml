@@ -33,7 +33,7 @@
                     <img src="~/images/spicy.png" width="30" height="30" />
                     <img src="~/images/verySpicy.png" width="30" height="30" />
 
-                    <label class="text-info" style="cursor:pointer">Spice__2</label>
+                    <label class="text-info" style="cursor:pointer">Spice Online Restaurant</label>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +65,7 @@
                                 @{
                                     var count = HttpContextAccessor.HttpContext.Session.GetInt32(@SD.ssShoppingCartCount);
                                 }
-                                <a href="#" class="nav-link">
+                                <a asp-area="Customer" asp-controller="Cart" asp-action="Index" class="nav-link">
                                     <i class="fas fa-shopping-cart"></i> &nbsp; (@count)
                                 </a>
                             </li>

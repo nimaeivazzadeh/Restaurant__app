@@ -43,11 +43,11 @@
 <div class="backgroundWhite container">
 
     <ul id="menu-filters" class="menu-filter-list list-inline text-center">
-        <li class="active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Show All</li>
+        <li class="filter active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Show All</li>
 
         @foreach (var item in Model.Category)
         {
-            <li class="ml-1 mr-1" data-filter=".@item.Name.Replace(" ",string.Empty)">@item.Name</li>
+            <li class="filter ml-1 mr-1" data-filter=".@item.Name.Replace(" ",string.Empty)">@item.Name</li>
         }
     </ul>
 
@@ -61,8 +61,8 @@
 </div>
 
 @section Scripts{
-    <script src="https://code.jquery.com/jquery-3.3.1.js"
-            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    <script src="http://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
             crossorigin="anonymous"></script>
 
     <script>
@@ -72,8 +72,8 @@
         (function ($) {
 
             $("#menu-filters li").click(function () {
-                $("#menu-filters li").removeClass('active btn btn-secondary');
-                $(this).addClass('active btn btn-secondary');
+                $("#menu-filters li").removeClass('filter active btn btn-secondary');
+                $(this).addClass('filter active btn btn-secondary');
 
                 var selectedFilter = $(this).data("filter");
 
