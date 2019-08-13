@@ -18,7 +18,7 @@ namespace Spice__2.Areas.Admin.Controllers
 
         private readonly ApplicationDbContext _db; //  This is our local object.
 
-        public CategoryController(ApplicationDbContext db) // This is a constructor used for dependency injection. This is retrived from our Container.
+        public CategoryController(ApplicationDbContext db) // This is a constructor used for dependency injection. This is retrieved from our Container.
         {
             _db = db;
         }
@@ -34,7 +34,7 @@ namespace Spice__2.Areas.Admin.Controllers
         {
             return View();
         }
-        //--------------------------------------------------------------------------//
+        //----------------------------asp-action-----------------------------------//
         //POST --- Create
         [HttpPost]
         [ValidateAntiForgeryToken]

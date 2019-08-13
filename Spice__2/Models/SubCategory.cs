@@ -13,7 +13,7 @@ namespace Spice__2.Models
         public int Id { get; set; }
                        
         [Required]
-        [Display(Name = "SubCategory")]
+        [Display(Name = "Sub Category")]
         public string Name { get; set; }
 
 

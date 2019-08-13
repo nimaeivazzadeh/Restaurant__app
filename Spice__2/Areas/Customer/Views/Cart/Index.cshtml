@@ -48,18 +48,18 @@
 
                                     <div class="col-6 col-sm-4 col-lg-6">
                                         <div class="float-right mx-1">
-                                            <button type="submit" class="btn btn-primary" asp-action="plus" asp-route-cartId="@item.Id">
+                                            <button type="submit" class="btn btn-primary" asp-action="Plus" asp-route-cartId="@item.Id">
                                                 <i class="fas fa-plus"></i>
                                             </button>
                                         </div>
                                         <div class="float-right mx-1">
-                                            <button type="submit" class="btn btn-danger" asp-action="minus" asp-route-cartId="@item.Id">
+                                            <button type="submit" class="btn btn-danger" asp-action="Minus" asp-route-cartId="@item.Id">
                                                 <i class="fas fa-minus"></i>
                                             </button>
                                         </div>
                                     </div>
                                     <div class="col-2 col-sm-4 col-lg-2 text-right">
-                                        <button type="submit" class="btn btn-outline-danger" asp-action="remove" asp-route-cartId="@item.Id">
+                                        <button type="submit" class="btn btn-outline-danger" asp-action="Remove" asp-route-cartId="@item.Id">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </div>
@@ -76,15 +76,15 @@
                                         <input asp-for="@Model.OrderHeader.CouponCode" id="txtCouponCode" class="form-control" placeholder="coupon code..." />
                                     </div>
                                     <div class="col-5" style="margin-top:2px;">
-                                        <button type="submint" class="btn btn-sm form-control btn-outline-success" id="btnCoupon" asp-action="AddCoupon">Apply</button>
-                                        <button type="submint" class="btn btn-sm form-control btn-outline-danger" id="btnRemoveCoupon" style="display:none" asp-action="AddCoupon">Remove</button>
+                                        <button type="submit" class="btn btn-sm form-control btn-outline-success" id="btnCoupon" asp-action="AddCoupon">Apply</button>
+                                        <button type="submit" class="btn btn-sm form-control btn-outline-danger" id="btnRemoveCoupon" style="display:none" asp-action="RemoveCoupon">Remove</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 offset-md-1 col-lg-4 offset-lg-3 pr-4">
                                  <ul class="list-group">
                                      <li class="list-group-item d-flex justify-content-between bg-light">
-                                         <span class="text-info"> Total (USD)</span>
+                                         <span class="text-info">Total (USD)</span>
                                          <strong class="text-info">$ <span id="txtOrderTotal">@Model.OrderHeader.OrderTotal</span></strong>
                                      </li>
                                  </ul>
@@ -93,7 +93,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="col-12 col-lg-4 offset-lg-8 col-md-6 offset-md-6">
-                            <a asp-action="summary" asp-area="Customer" asp-controller="Cart" class="btn btn-success form-control">Summary</a>
+                            <a asp-action="Summary" asp-area="Customer" asp-controller="Cart" class="btn btn-success form-control">Summary</a>
                         </div>
                     </div>
                 </div> 
@@ -106,3 +106,19 @@
     }
 
 </form>
+
+@section Scripts{
+    <script>
+        $(function () {
+            var couponCode = document.getElementById("txtCouponCode").value;
+
+            if (couponCode.length > 0) {
+                document.getElementById('btnCoupon').style.display = 'none';
+                document.getElementById('btnRemoveCoupon').style.display = '';
+            } else {
+                document.getElementById('btnCoupon').style.display = '';
+                document.getElementById('btnRemoveCoupon').style.display = 'none';
+            }
+        });
+    </script>
+ }

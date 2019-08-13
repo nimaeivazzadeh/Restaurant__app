@@ -12,7 +12,7 @@ using Spice__2.Utility;
 
 namespace Spice__2.Areas.Admin.Controllers
 {
-    [Authorize(Roles =SD.ManegerUser)]
+    [Authorize(Roles = SD.ManegerUser)]
     [Area("Admin")]
     public class CouponController : Controller
     {
@@ -24,7 +24,7 @@ namespace Spice__2.Areas.Admin.Controllers
             _db = db;
         }
 
-        //Retrieve from database and pass to the view-----------------//
+        //Retrieve all of the coupons from database and pass them to the view-----------------//
         public async Task<IActionResult> Index()
         {
             return View(await _db.Coupon.ToListAsync());

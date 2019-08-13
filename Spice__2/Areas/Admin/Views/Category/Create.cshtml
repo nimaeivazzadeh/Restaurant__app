@@ -7,6 +7,7 @@
 <br />
 <h2 class="text-info">Create Category</h2>
 <br />
+
 <form method="post" asp-action="Create">
     <div class="border backgroundWhite">
         <div asp-validation-summary="ModelOnly" class="table-danger"></div>
@@ -15,7 +16,7 @@
                 <label asp-for="Name" class="col-form-label"></label>
             </div>
             <div class="col-5">
-                <input asp-for="Name" class="form-control" />
+                <input asp-for="Name" class="form-control"  placeholder="Please write name of category"/>
             </div>
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>

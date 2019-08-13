@@ -13,6 +13,8 @@ using Microsoft.EntityFrameworkCore;
 using Spice__2.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Spice__2.Utility;
+using Stripe;
 
 namespace Spice__2
 {
@@ -43,6 +45,10 @@ namespace Spice__2
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            //-----------------------------------------------------------------//
+
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe")); //--> To configure stripe into our middleware.
+            //-- It gets SecretKey and Publishable Key and add those to our two variables in StripeSettings.
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             //------------------------------------------------------------------------------------// Configuring session.
             services.AddSession(options => {
@@ -69,6 +75,7 @@ namespace Spice__2
                 app.UseHsts();
             }
 
+            StripeConfiguration.SetApiKey(Configuration.GetSection("Stripe")["SecretKey"]);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

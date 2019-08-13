@@ -18,20 +18,22 @@ namespace Spice__2.Areas.Admin.Controllers
     public class SubCategoryController : Controller
     {
 
-        private readonly ApplicationDbContext _db;
+        private readonly ApplicationDbContext _db;   //--> Dependency Injection.
 
         [TempData]
-        public string StatusMessage { get; set; }
+        public string StatusMessage { get; set; }   
 
         public SubCategoryController(ApplicationDbContext db)
         {
             _db = db;
         }
 
+        //--------------------------------------------------------------------------------------------//
         //-- Get --> Index -- retreive everyting from database and pass it into the view.
+
         public async Task<IActionResult> Index()
         {
-            var subCategories = await _db.SubCategories.Include(s => s.Category).ToListAsync(); // we need to retrieve all subcategories cause we want to display them.
+            var subCategories = await _db.SubCategories.Include(s => s.Category).ToListAsync(); // We need to retrieve all subcategories cause we want to display them.
             return View(subCategories);
         }
 

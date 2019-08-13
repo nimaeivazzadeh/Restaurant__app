@@ -17,7 +17,7 @@ namespace Spice__2.Models
         [Required]
         public string CouponType { get; set; }
 
-        public enum ECouponType { Percent=0, Dollar=1 }
+        public enum ECouponType { Percent = 0, Dollar = 1 }
 
         [Required]
         public double Discount { get; set; }

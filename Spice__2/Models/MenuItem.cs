@@ -33,7 +33,7 @@ namespace Spice__2.Models
         [Display(Name = "SubCategory")]
         public int SubCategoryId { get; set; }
 
-        [ForeignKey("SubCategoryId")]                      //-------SubCategory reference to SubcategoryId-------//
+        [ForeignKey("SubCategoryId")]                   //-------SubCategory reference to SubcategoryId-------//
         public virtual SubCategory SubCategory { get; set; }
 
         [Range(1, int.MaxValue, ErrorMessage ="Price should be greater than ${1}")]
